@@ -1,9 +1,9 @@
 /* ===== YOUR CSS GOES HERE ===== */
 /* ===== START WITH GLOBAL STYLES THEN USE MEDIA QUERIES FOR LAYOUT ADJUSTMENTS ===== */
 
-* {
+body > h2 {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     box-sizing: border-box;
   }
   
@@ -132,7 +132,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: top 1s ease;
+      transition: top 0.5s ease;
       line-height: 2;
       background-color: #232121;
     }
@@ -144,14 +144,13 @@
       right: 20px;
     }
   
-    nav .openMenu {
-      /*margin-top: 1em;
-      margin-bottom: auto;
-      margin-left: 1em;
-      cursor: pointer;*/    
+    nav .openMenu {   
+      position: absolute;
+      display: flex; 
       top: 0;
-      right: 0;
-      display: flex;
+      left: 0;
+      padding: 20px; 
+      z-index: 10; 
     }
   
     i {
