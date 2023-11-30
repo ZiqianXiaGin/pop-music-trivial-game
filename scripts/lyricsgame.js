@@ -73,10 +73,10 @@ document.addEventListener("DOMContentLoaded", function() {
       startTimer();
     } else {
       endGame();
-    }
   }
+}
   function endGame() {
-    alert('Game Over! Your score is: ' + score);
+    alert('Game Over! Your score is: ' + score + '/50');
   }
 
   function startTimer() {
@@ -87,8 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('timer').textContent = timeLeft;
       if (timeLeft <= 0) {
         clearInterval(timerId);
-        currentQuestion++;
-        displayQuestion();
+        endGame(); 
       }
     }, 1000);
   }
@@ -98,9 +97,11 @@ document.addEventListener("DOMContentLoaded", function() {
     if (index === questions[currentQuestion].correct) {
       score++;
       document.getElementById('score').textContent = `Score: ${score}`;
+      currentQuestion++;
+      displayQuestion();
+    } else {
+      endGame(); 
     }
-    currentQuestion++;
-    displayQuestion();
   }
 
   displayQuestion();
