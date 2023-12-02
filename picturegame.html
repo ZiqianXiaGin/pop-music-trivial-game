@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
     <!-- LINK TO EXTERNAL JS LIBRARIES HERE -->
     <!-- LINK TO YOUR JS HERE. NOTE THE DEFER ATTRIBUTE. -->
+    <script src="scripts/nav js" defer></script>
     <script src="scripts/picturegame.js" defer></script>
 </head>
 
@@ -32,16 +33,18 @@
         <div class="image-container"> </div>
         <div class="answers"></div>
         <div id="score-tracker">Score: <span id="score">0</span></div>
-      
+      </div>
+      <div id="gameOver">
+        <h1>Game Over! Your score is : <span id="finalScore">0</span>/50</h1>
       </div>
 </body>
 
 <nav>
     <div class="openMenu"><i class="fa fa-bars"></i></div>
     <ul class="mainMenu">  
-      <li><a href="index.html">Home</a></li>
-      <li><a href="songlist.html">Song Lists</a></li>
-      <li><a href="about.html">About</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categorychoice.html">Game List</a></li>
+        <li><a href="about.html">About</a></li>
       <div class="closeMenu"><i class="fa fa-times"></i></div>
     </ul>
     </nav>

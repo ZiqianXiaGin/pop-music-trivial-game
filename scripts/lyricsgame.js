@@ -76,7 +76,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 }
   function endGame() {
-    alert('Game Over! Your score is: ' + score + '/50');
+    document.getElementById('finalScore').textContent = score;
+    document.getElementById('gameOver').style.display = 'block';
+    document.getElementById('game').style.display = 'none'; 
   }
 
   function startTimer() {
