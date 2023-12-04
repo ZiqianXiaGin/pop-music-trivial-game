@@ -277,6 +277,7 @@ body > h2 {
   }
   @media (max-width: 646px) {
     .question {
+      margin: 15px 0;
       padding: 18px;
     }
   }
