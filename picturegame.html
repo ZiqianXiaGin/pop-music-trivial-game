@@ -22,21 +22,19 @@
 
 
 <body>
-    <div class="game">
-        <div class="progress"></div>
-        <div class="timer">
-          <div class="timer-circle">
-            <span id="timer"></span>
-          </div>
-        </div>
-        <div class="question">Guess the title of the song</div>
-        <div class="image-container"> </div>
-        <div class="answers"></div>
-        <div id="score-tracker">Score: <span id="score">0</span></div>
+  <div id="game">
+    <div class="timer">
+      <div class="timer-circle">
+        <span id="timer"></span>
       </div>
-      <div id="gameOver">
-        <h1>Game Over! Your score is : <span id="finalScore">0</span>/50</h1>
-      </div>
+    </div>
+    <div id="score"></div>
+    <div class="question" id="question"></div>
+    <div class="answers" id="answers"></div>
+  </div>
+  <div id="gameOver" style="display: none;">
+    <h3>Game Over! Your score is : <span id="finalScore">0</span>/50</h3>
+  </div>
 </body>
 
 <nav>

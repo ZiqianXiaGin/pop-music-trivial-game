@@ -92,16 +92,33 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  function correctEffect() {
+    const effectElement = document.createElement('div');
+    effectElement.id = 'correctEffect';
+    effectElement.textContent = '🎉';
+    effectElement.style.fontSize = '60px';
+    effectElement.style.position = 'absolute';
+    effectElement.style.top = '55%';
+    effectElement.style.left = '50%';
+    effectElement.style.transform = 'translate(-50%, -50%)';
+    document.body.appendChild(effectElement);
+    setTimeout(() => {
+      effectElement.remove();
+    }, 1000); 
+  }
+
+
   function checkAnswer(index, correctAnswer) {
     clearInterval(timerId);
     if (index === correctAnswer) {
       score++;
+      correctEffect();
+      document.getElementById('score').textContent = `Score: ${score}`;
+      setTimeout(displayQuestion, 1000);
     }
     else {
       endGame ();
     }
-    document.getElementById('score').textContent = `Score: ${score}`;
-    displayQuestion();
   }
 
   function startTimer() {
@@ -112,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('timer').textContent = timeLeft;
       if (timeLeft <= 0) {
         clearInterval(timerId);
-        displayQuestion();
+        endGame();
       }
     }, 1000);
   }
