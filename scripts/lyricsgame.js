@@ -54,31 +54,54 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   ];
-  let currentQuestion = 0;
+  let usedQuestions = [];
   let score = 0;
   let timerId;
 
+  function getRandomQuestion() {
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * questions.length);
+    } while (usedQuestions.includes(randomIndex));
+
+    usedQuestions.push(randomIndex);
+    if (usedQuestions.length === questions.length) {
+      endGame();
+      return null;
+    }
+
+    return questions[randomIndex];
+  }
+
   function displayQuestion() {
     clearTimeout(timerId);
-    if (currentQuestion < questions.length) {
-      document.getElementById('question').textContent = questions[currentQuestion].question;
+    const currentQuestion = getRandomQuestion();
+    if (currentQuestion) {
+      document.getElementById('question').textContent = currentQuestion.question;
       const options = document.getElementById('answers');
       options.innerHTML = '';
-      questions[currentQuestion].answers.forEach((answer, index) => {
+
+      currentQuestion.answers.forEach((answer, index) => {
         const button = document.createElement('button');
         button.textContent = answer;
-        button.onclick = () => checkAnswer(index);
+        button.addEventListener('click', function() { checkAnswer(index, currentQuestion.correct); });
         options.appendChild(button);
       });
+
       startTimer();
-    } else {
-      endGame();
+    }
   }
-}
-  function endGame() {
-    document.getElementById('finalScore').textContent = score;
-    document.getElementById('gameOver').style.display = 'block';
-    document.getElementById('game').style.display = 'none'; 
+
+  function checkAnswer(index, correctAnswer) {
+    clearInterval(timerId);
+    if (index === correctAnswer) {
+      score++;
+    }
+    else {
+      endGame ();
+    }
+    document.getElementById('score').textContent = `Score: ${score}`;
+    displayQuestion();
   }
 
   function startTimer() {
@@ -89,21 +112,27 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('timer').textContent = timeLeft;
       if (timeLeft <= 0) {
         clearInterval(timerId);
-        endGame(); 
+        displayQuestion();
       }
     }, 1000);
   }
 
-  function checkAnswer(index) {
-    clearInterval(timerId);
-    if (index === questions[currentQuestion].correct) {
-      score++;
-      document.getElementById('score').textContent = `Score: ${score}`;
-      currentQuestion++;
-      displayQuestion();
-    } else {
-      endGame(); 
-    }
+  function endGame() {
+    document.getElementById('finalScore').textContent = score;
+    document.getElementById('gameOver').style.display = 'block';
+    document.getElementById('game').style.display = 'none';
+    createRestartButton();
+  }
+  
+  function createRestartButton() {
+    const restartButton = document.createElement('button');
+    restartButton.textContent = 'Start Over';
+    restartButton.addEventListener('click', function() { restartGame(); });
+    document.getElementById('gameOver').appendChild(restartButton);
+  }
+
+  function restartGame() {
+    location.reload();
   }
 
   displayQuestion();

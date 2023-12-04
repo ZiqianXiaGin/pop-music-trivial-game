@@ -230,8 +230,8 @@ body > h2 {
       color: #f9ecff; 
       font-size: 1.5rem;
       margin-right: 20%;
-      margin-bottom: 10%;
-      margin-top: 10%;
+      margin-bottom: 5%;
+      margin-top: 20%;
       padding: 40px 20px; 
       border-radius: 20px; 
       border: 2px solid #c39ffd;
@@ -251,17 +251,19 @@ body > h2 {
   }
   
   .timer-circle {
-    background-color: #c39ffd;
+    background-color: #0c67f0;
+    border: 2px solid #c39ffd;
     border-radius: 50%;
     display: inline-block;
     width: 40px;
     padding: 20px 20px;
     margin: 20px 0;
+    font-weight: 500;
   }
   
   .timer {
     font-size: 2em;
-    color: #0c67f0;
+    color: #f9ecff;
     text-align: center;
   }
   
