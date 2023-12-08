@@ -6,51 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     { img: "images/counting star.png", answers: ["Three Stars", "Stars", "Pretty Stars", "Counting Star"], correct: 3},
     { img: "images/bleeding love.png", answers: ["Blood & Love", "Bleeding Love", "Love Bleeding", "Love to Death"], correct: 1},
     { img: "images/7 rings.png", answers: ["Rings", "7 Rings", "Ring 7", "5 Rings"], correct: 1},
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: },
-    { img: "", answers: ["", "", "", ""], correct: }
+    
   ];
   let usedQuestions = [];
   let score = 0;
@@ -76,23 +32,25 @@ document.addEventListener("DOMContentLoaded", function() {
     clearTimeout(timerId);
     const currentQuestion = getRandomQuestion();
     if (currentQuestion) {
-      const questionContainer = document.getElementById('question');
-      questionContainer.innerHTML = ''; 
-
-
-      const image = document.createElement('img');
-      image.src = currentQuestion.img;
-      image.alt = 'Question Image';
-      questionContainer.appendChild(image);
-
+      const questionImage = document.getElementById('questionImage');
+      questionImage.src = currentQuestion.img; 
       const options = document.getElementById('answers');
       options.innerHTML = '';
 
+      
       currentQuestion.answers.forEach((answer, index) => {
-        const button = document.createElement('button');
-        button.textContent = answer;
-        button.addEventListener('click', function() { checkAnswer(index, currentQuestion.correct); });
-        options.appendChild(button);
+
+        const radio = document.createElement('input');
+        radio.setAttribute('type', 'radio');
+        radio.setAttribute('id', index);
+        radio.setAttribute('value', answer);
+        const label = document.createElement('label');
+        label.setAttribute('for', index);
+        label.textContent = answer;
+        radio.addEventListener('click', function() { checkAnswer(index, currentQuestion.correct); });
+        options.appendChild(radio);
+        options.appendChild(label);
+        
       });
 
       startTimer();

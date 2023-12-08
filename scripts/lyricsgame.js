@@ -57,6 +57,8 @@ document.addEventListener("DOMContentLoaded", function() {
   let usedQuestions = [];
   let score = 0;
   let timerId;
+  let secondChance = false;
+  
 
   function getRandomQuestion() {
     let randomIndex;
@@ -74,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function displayQuestion() {
+    secondChance = false; 
     clearTimeout(timerId);
     const currentQuestion = getRandomQuestion();
     if (currentQuestion) {
@@ -82,10 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
       options.innerHTML = '';
 
       currentQuestion.answers.forEach((answer, index) => {
-        /*const button = document.createElement('button');
-        button.textContent = answer;
-        button.addEventListener('click', function() { checkAnswer(index, currentQuestion.correct); });
-        options.appendChild(button);*/
 
         const radio = document.createElement('input');
         radio.setAttribute('type', 'radio');
@@ -118,18 +117,36 @@ document.addEventListener("DOMContentLoaded", function() {
       effectElement.remove();
     }, 1000); 
   }
+  function secondChanceEffect() {
+    const effectElement = document.createElement('div');
+    effectElement.id = 'secondChanceEffect';
+    effectElement.textContent = 'Try Again!';
+    effectElement.style.fontSize = '70px';
+    effectElement.style.position = 'absolute';
+    effectElement.style.top = '55%';
+    effectElement.style.left = '50%';
+    effectElement.style.transform = 'translate(-50%, -50%)';
+    document.body.appendChild(effectElement);
+    setTimeout(() => {
+      effectElement.remove();
+    }, 1000); 
+  }
 
 
   function checkAnswer(index, correctAnswer) {
-    clearInterval(timerId);
     if (index === correctAnswer) {
       score++;
       correctEffect();
       document.getElementById('score').textContent = `Score: ${score}`;
       setTimeout(displayQuestion, 1000);
-    }
-    else {
-      endGame ();
+    } else {
+      if (!secondChance) {
+        secondChance = true;
+        secondChanceEffect(); 
+      } else {
+        clearInterval(timerId); 
+        endGame();
+      }
     }
   }
 
