@@ -82,10 +82,22 @@ document.addEventListener("DOMContentLoaded", function() {
       options.innerHTML = '';
 
       currentQuestion.answers.forEach((answer, index) => {
-        const button = document.createElement('button');
+        /*const button = document.createElement('button');
         button.textContent = answer;
         button.addEventListener('click', function() { checkAnswer(index, currentQuestion.correct); });
-        options.appendChild(button);
+        options.appendChild(button);*/
+
+        const radio = document.createElement('input');
+        radio.setAttribute('type', 'radio');
+        radio.setAttribute('id', index);
+        radio.setAttribute('value', answer);
+        const label = document.createElement('label');
+        label.setAttribute('for', index);
+        label.textContent = answer;
+        radio.addEventListener('click', function() { checkAnswer(index, currentQuestion.correct); });
+        options.appendChild(radio);
+        options.appendChild(label);
+
       });
 
       startTimer();
@@ -122,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function startTimer() {
-    let timeLeft = 10;
+    let timeLeft = 20;
     document.getElementById('timer').textContent = timeLeft;
     timerId = setInterval(() => {
       timeLeft--;
