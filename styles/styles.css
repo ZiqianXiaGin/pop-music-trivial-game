@@ -43,11 +43,7 @@ body > h2 {
     margin-bottom: 30px;
     padding: auto;
     font-size: 3rem;
-    /*background-image: linear-gradient(45deg, #2ca2b4, #5598de 24%, #7f87ff 45%, #f65aad 76%, #ec3d43);
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   h3 {
