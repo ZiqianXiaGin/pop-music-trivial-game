@@ -352,21 +352,53 @@ body > h2 {
   *, *:before, *:after {
     box-sizing: inherit;
   }
-  .credits, .project {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      background-color: #232121;
-      color: #f9ecff;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      margin: 20px;
-      list-style: none;
-      border: 1px solid #c39ffd; 
-      border-radius: 15px;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
   }
-  .credits > li, .project > li {
+  .brief, .credits, .project {
+    background-color: #232121;
+    color: #f9ecff;
+    padding: 20px;
+    margin: 20px;
+    list-style: none;
+    border: 1px solid #c39ffd;
+    border-radius: 15px;
+    font-size: 1.2rem;
+  }
+  .brief {
+    margin-bottom: 20px; 
+    width: 50%; 
+    text-align: center;
+  }
+  .section-container {
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%; 
+  }
+  @media (max-width: 646px) {
+    .brief {
+      width: auto;
+      margin-top: 240px; 
+    }
+  
+    .section-container {
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+      max-height: fit-content;
+    }
+  
+    .credits, .project {
+      width:fit-content; 
+    }
+  }
+  .credits, .project {
+    flex: 1;
+  }
+  
+ .credits > li, .project > li {
     text-decoration: underline;
   }
   h4 {
