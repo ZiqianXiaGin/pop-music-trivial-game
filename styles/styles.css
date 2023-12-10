@@ -257,9 +257,6 @@ body > h2 {
     text-align: center;
   }
   
-  .progress {
-    font-size: 1.5em;
-  }
   
   .timer-circle {
     background-color: #0c67f0;
@@ -380,7 +377,7 @@ body > h2 {
   @media (max-width: 646px) {
     .brief {
       width: auto;
-      margin-top: 240px; 
+      margin-top: 300px; 
     }
   
     .section-container {
@@ -421,6 +418,12 @@ body > h2 {
   }
   .categoryimage {
     background-image: url("https://i.pinimg.com/564x/da/d6/7d/dad67d4623bcd37a816c993fe2feb695.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .gameimage {
+    background-image: url("https://i.pinimg.com/564x/15/7e/62/157e62a162d0a5644cc7851d79f91b06.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

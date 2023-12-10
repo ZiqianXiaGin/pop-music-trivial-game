@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
   let usedQuestions = [];
   let score = 0;
   let timerId;
-  let secondChance = false;
   
 
   function getRandomQuestion() {
