@@ -6,7 +6,51 @@ document.addEventListener("DOMContentLoaded", function() {
     { img: "images/counting star.png", answers: ["Three Stars", "Stars", "Pretty Stars", "Counting Star"], correct: 3},
     { img: "images/bleeding love.png", answers: ["Blood & Love", "Bleeding Love", "Love Bleeding", "Love to Death"], correct: 1},
     { img: "images/7 rings.png", answers: ["Rings", "7 Rings", "Ring 7", "5 Rings"], correct: 1},
-    
+    { img: "", answers: ["", "", "", ""], correct: 0},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 0},
+    { img: "", answers: ["", "", "", ""], correct: 0},
+    { img: "", answers: ["", "", "", ""], correct: 0},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 0},
+    { img: "", answers: ["", "", "", ""], correct: 0},
+    { img: "", answers: ["", "", "", ""], correct: 0},
+    { img: "", answers: ["", "", "", ""], correct: 0},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 3},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 1},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2},
+    { img: "", answers: ["", "", "", ""], correct: 2}
   ];
   let usedQuestions = [];
   let score = 0;
@@ -50,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         radio.addEventListener('click', function() { checkAnswer(index, currentQuestion.correct); });
         options.appendChild(radio);
         options.appendChild(label);
-        
+
       });
 
       startTimer();
@@ -73,21 +117,41 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
 
+  function secondChanceEffect() {
+    const effectElement = document.createElement('div');
+    effectElement.id = 'secondChanceEffect';
+    effectElement.textContent = 'Try Again!';
+    effectElement.style.fontSize = '70px';
+    effectElement.style.position = 'absolute';
+    effectElement.style.top = '55%';
+    effectElement.style.left = '50%';
+    effectElement.style.transform = 'translate(-50%, -50%)';
+    document.body.appendChild(effectElement);
+    setTimeout(() => {
+      effectElement.remove();
+    }, 1000); 
+  }
+
+
   function checkAnswer(index, correctAnswer) {
-    clearInterval(timerId);
     if (index === correctAnswer) {
       score++;
       correctEffect();
       document.getElementById('score').textContent = `Score: ${score}`;
       setTimeout(displayQuestion, 1000);
-    }
-    else {
-      endGame ();
+    } else {
+      if (!secondChance) {
+        secondChance = true;
+        secondChanceEffect(); 
+      } else {
+        clearInterval(timerId); 
+        endGame();
+      }
     }
   }
 
   function startTimer() {
-    let timeLeft = 10;
+    let timeLeft = 20;
     document.getElementById('timer').textContent = timeLeft;
     timerId = setInterval(() => {
       timeLeft--;
