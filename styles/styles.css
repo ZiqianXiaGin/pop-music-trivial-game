@@ -377,7 +377,7 @@ body > h2 {
   @media (max-width: 646px) {
     .brief {
       width: auto;
-      margin-top: 300px; 
+      margin-top: 350px; 
     }
   
     .section-container {
@@ -415,6 +415,11 @@ body > h2 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+  @media (max-width: 646px) {
+    .aboutimage {
+      background-image: url("https://i.pinimg.com/564x/56/05/31/5605311efe7ef1b6c677425f76072f20.jpg");
+    }
   }
   .categoryimage {
     background-image: url("https://i.pinimg.com/564x/da/d6/7d/dad67d4623bcd37a816c993fe2feb695.jpg");
