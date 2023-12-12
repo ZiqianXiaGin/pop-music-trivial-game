@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     { img: "images/when we were young.png", answers: ["When We were Babies", "When We were Young", "When We were Children", "In Our Youth"], correct: 1},
     { img: "images/you should see me in a crown.png", answers: ["You Should See Me in a Tiara", "You Should See Me in a Crown", "I'm in a Crown", "You Should Look at Me in a Crown"], correct: 1},
     { img: "images/yummy.png", answers: ["Delicious", "Yummy", "Tasty", "Scrumptious"], correct: 1},
-    { img: "images/starry night.png", answers: ["Starry Starry Night", "Beautiful Night", "Starry Night", "Beautiful Night"], correct: 2},
+    { img: "images/starry night.png", answers: ["Starry Starry Night", "Beautiful Night", "Starry Night", "Pretty Night"], correct: 2},
     { img: "images/When the Party's Over.png", answers: ["When the Party Ends", "After the Party's Over", "When the Party's Over", "After the Party Ends"], correct: 2},
     { img: "images/wish you were gay.png", answers: ["Wish You Are Gay", "Wish You to be Gay", "Wish You Were Gay", "I Thought You were Gay"], correct: 2}
   ];
